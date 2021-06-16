@@ -1,3 +1,4 @@
-#link-tree
-  = content_tag_for :ul, @page.children do |child|
-    %li= show_path(child.path)
+= yield :subpages_tree
+- flash.each do |type, message|
+  %p{:class => type}= message
+%hr

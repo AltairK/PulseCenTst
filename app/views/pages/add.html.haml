@@ -1,2 +1,5 @@
 %h1= @title = t('.title', page_title: @page.title)
-= form_tag add_path(@page.path) do |f|
+
+= form_for @new_page, url: show_path(@page.path) do |f|
+  = render 'fields', :f => f
+  = f.submit

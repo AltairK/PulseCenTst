@@ -8,7 +8,10 @@ class Page < ApplicationRecord
             uniqueness: { scope: :page_id },
             format: { with: /\A[#{MATCHED_SYMBOLS}]+\Z/i },
             exclusion: { in: %w[add edit] }
-  validate :root_page_is_unique, if: :root?
+  validates :title,
+            presence: true
+  validate :root_page_is_unique, if: :root?, on: :create
+
   before_save :parse_page
 
   # Search page by her route path. If page not found raise ActiveRecord::RecordNotFound
@@ -16,8 +19,11 @@ class Page < ApplicationRecord
   # @param [String] path route path to page
   # @return [Page]
   def self.find_by_path(path)
-    if path && ((page_names = names_from_path(path)).size > 1)
-      page_names.drop(1).inject(root!) { |page, page_name| page.children.find_by_name!(page_name) }
+    if path
+      page_names = names_from_path path
+      found_page = Page.find_by_name! page_names.shift
+      page_names.inject(found_page) { |page, page_name| page.children.find_by_name!(page_name) }
+
     else
       root!
     end

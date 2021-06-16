@@ -37,3 +37,9 @@ en:
           attributes:
             page_id:
               root_page_is_not_unique: 'root should be unique'
+
+  pages:
+    add_root:
+      root_already_exist: "Root already exist"
+    page_not_found: "Page not found"
+    try_add_root_page: "Any pages not found. Try add first.."

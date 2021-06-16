@@ -1,2 +1,10 @@
+- content_for :subpages_tree do
+  #link-tree
+    = @page.subpages_tree
 %h1= @title = @page.title
-%p= @page.text
+%p=raw @page.text
+
+#page-actions
+  = link_to t('.edit'), edit_path(@page.path)
+  = link_to t('.add'), add_path(@page.path)
+  = link_to t('.up'), show_path(@page.parent.path) unless @page.root?
