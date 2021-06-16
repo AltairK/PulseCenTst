@@ -9,6 +9,7 @@ class Page < ApplicationRecord
             format: { with: /\A[#{MATCHED_SYMBOLS}]+\Z/i },
             exclusion: { in: %w[add edit] }
   validate :root_page_is_unique, if: :root?
+  before_save :parse_page
 
   # Search page by her route path. If page not found raise ActiveRecord::RecordNotFound
   #
@@ -80,5 +81,9 @@ class Page < ApplicationRecord
   # @return [Array] list of page names
   def self.names_from_path(path)
     path.split('/').delete_if(&:blank?)
+  end
+
+  def parse_page
+    self.text = PageParser.to_html(text)
   end
 end
