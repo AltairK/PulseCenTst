@@ -40,6 +40,11 @@ en:
 
   pages:
     add_root:
+      title: "Add root page"
       root_already_exist: "Root already exist"
+    add:
+      title: "Add page to %{page_title}"
+    edit:
+      title: "Edit %{page_title}"
     page_not_found: "Page not found"
     try_add_root_page: "Any pages not found. Try add first.."

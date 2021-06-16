@@ -1,5 +1,6 @@
-%h1= @title = t('.title', page_title: "Root")
+%h1= @title = t('.title')
 
 = form_for @new_page, url: root_path do |f|
   = render 'fields', :f => f
-  = f.submit
+  .actions
+    = f.submit

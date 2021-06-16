@@ -1,4 +1,6 @@
 %h1= @title = t('.title', page_title: @page.title)
 = form_for @page, url: show_path(@page.path), method: :put do |f|
   = render 'fields', :f => f
-  = f.submit
+  .actions
+    = f.submit
+    = link_to t('.cancel'), show_path(@page.path)

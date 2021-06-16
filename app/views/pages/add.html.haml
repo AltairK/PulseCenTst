@@ -2,4 +2,6 @@
 
 = form_for @new_page, url: show_path(@page.path) do |f|
   = render 'fields', :f => f
-  = f.submit
+  .actions
+    = f.submit
+    = link_to t('.cancel'), show_path(@page.path)
