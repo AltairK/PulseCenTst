@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  # before_filter :find_base_page, :except => [:add_root, :create_root] # find base page for actions
+  before_action :find_base_page, :except => [:add_root, :create_root] # find base page for actions
   rescue_from ActiveRecord::RecordNotFound, :with => :page_not_found
 
   def show

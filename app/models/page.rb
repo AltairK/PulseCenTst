@@ -3,7 +3,7 @@ class Page < ApplicationRecord
 
   belongs_to :parent, class_name: :Page, foreign_key: :page_id
   has_many :children, class_name: :Page
-  attr_accessor :name, :text, :title
+  attr_accessible :name, :text, :title
   validates :name,
             uniqueness: { scope: :page_id },
             format: { with: /\A[#{MATCHED_SYMBOLS}]+\Z/i },
@@ -52,6 +52,19 @@ class Page < ApplicationRecord
       page_names.unshift(page.name) while page = page.parent
       page_names.join('/')
     end
+  end
+
+  # All subpages in specified Array
+  #
+  # @return [Array<Page, Array>] found subpages seen as
+  #   [page, [
+  #     [subpage1, [
+  #       [subsubpage1, [...]],
+  #       ...]],
+  #     [subpage2, [...]],
+  #     ...]]
+  def subpages
+    [self, children.map(&:subpages)]
   end
 
   private

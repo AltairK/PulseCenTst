@@ -1,2 +1,2 @@
-%h1 Pages#add
-%p Find me in app/views/pages/add.html.haml
+%h1= @title = t('.title', page_title: @page.title)
+= form_tag add_path(@page.path) do |f|
