@@ -1,0 +1,22 @@
+en:
+  activerecord:
+    errors:
+      models:
+        page:
+          attributes:
+            page_id:
+              root_page_is_not_unique: 'Главная страница должна быть уникальной'
+
+  pages:
+    show:
+      add: Добавить страницу
+      edit: Изменить страницу
+    add_root:
+      title: "Добавить главную"
+      root_already_exist: "Главная уже существует"
+    add:
+      title: "Добавление подстраницы для %{page_title}"
+    edit:
+      title: "Изменение %{page_title}"
+    page_not_found: "Страница не найдена"
+    try_add_root_page: "Страниц не найдено. Сначала попробуйте добавить.."
