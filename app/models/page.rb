@@ -1,5 +1,5 @@
 class Page < ApplicationRecord
-  MATCHED_SYMBOLS = 'a-zA-Z0-9_'
+  MATCHED_SYMBOLS = 'а-яА-Яa-zA-Z0-9_'
 
   belongs_to :parent, class_name: :Page, foreign_key: :page_id, optional: true
   has_many :children, class_name: :Page
