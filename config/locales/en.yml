@@ -42,6 +42,7 @@ en:
     show:
       add: Add page
       edit: Edit page
+      up: Up
     add_root:
       title: "Add root page"
       root_already_exist: "Root already exist"

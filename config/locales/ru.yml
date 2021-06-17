@@ -11,12 +11,13 @@ en:
     show:
       add: Добавить страницу
       edit: Изменить страницу
+      up: Выше уровнем
     add_root:
-      title: "Добавить главную"
-      root_already_exist: "Главная уже существует"
+      title: Добавить главную
+      root_already_exist: Главная уже существует
     add:
       title: "Добавление подстраницы для %{page_title}"
     edit:
       title: "Изменение %{page_title}"
-    page_not_found: "Страница не найдена"
-    try_add_root_page: "Страниц не найдено. Сначала попробуйте добавить.."
+    page_not_found: Страница не найдена
+    try_add_root_page: Страниц не найдено. Сначала попробуйте добавить..
