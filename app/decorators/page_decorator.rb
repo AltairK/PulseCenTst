@@ -1,9 +1,9 @@
-class PageDecorator < Draper::Base
+class PageDecorator < Draper::Decorator
   decorates :page
   decorates_association :children
   decorates_association :parent
 
-  allows :title, :text, :path, :root?
+  delegate :title, :text, :path, :root?
 
   # Generate subpages tree of current page
   #

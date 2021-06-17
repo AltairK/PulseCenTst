@@ -1,9 +1,8 @@
 class Page < ApplicationRecord
   MATCHED_SYMBOLS = 'a-zA-Z0-9_'
 
-  belongs_to :parent, class_name: :Page, foreign_key: :page_id
+  belongs_to :parent, class_name: :Page, foreign_key: :page_id, optional: true
   has_many :children, class_name: :Page
-  attr_accessible :name, :text, :title
   validates :name,
             uniqueness: { scope: :page_id },
             format: { with: /\A[#{MATCHED_SYMBOLS}]+\Z/i },

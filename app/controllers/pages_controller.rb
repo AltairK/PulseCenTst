@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   end
 
   def create
-    @new_page = @page.children.new(params[:page])
+    @new_page = @page.children.new(page_params)
     if @new_page.save
       respond_to do |f|
         f.html { redirect_to show_path(@new_page.path) }
@@ -31,7 +31,7 @@ class PagesController < ApplicationController
   end
 
   def create_root
-    @new_page = Page.new(params[:page])
+    @new_page = Page.new(page_params)
     if @new_page.save
       respond_to do |f|
         f.html { redirect_to show_path(@new_page.path) }
@@ -44,7 +44,7 @@ class PagesController < ApplicationController
   end
 
   def update
-    if @page.update_attributes(params[:page])
+    if @page.update(page_params)
       respond_to do |f|
         f.html { redirect_to show_path(@page.path) }
       end
@@ -74,5 +74,9 @@ class PagesController < ApplicationController
 
   def check_root_exists
     redirect_to root_path, notice: I18n.t('pages.add_root.root_already_exist') if Page.root
+  end
+
+  def page_params
+    params.require(:page).permit(:name, :title, :text, :page_id)
   end
 end
